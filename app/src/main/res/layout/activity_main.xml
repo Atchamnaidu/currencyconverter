@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.currencyconverter.viewmodel.ExchangeRatesViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_bg"
+        tools:context=".view.MainActivity">
+
+        <EditText
+            android:id="@+id/etAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_16"
+            android:background="@drawable/bottom_border"
+            android:fontFamily="sans-serif"
+            android:gravity="end"
+            android:hint="@string/amountHint"
+            android:imeOptions="actionDone|actionGo"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:padding="@dimen/dimen_16"
+            android:text="@={viewModel.amount}"
+            android:textColor="@color/text_color"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSpinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:textColor="@color/text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etAmount">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinner"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_width="150dp"
+                android:layout_height="?attr/dropdownListPreferredItemHeight"
+                android:backgroundTint="@color/grey"
+                android:dropDownWidth="150dp"
+                android:dropDownHeight="250dp"
+                android:dropDownVerticalOffset="1dp"
+                android:fontFamily="sans-serif"
+                android:inputType="none"
+                android:overlapAnchor="false"
+                android:padding="@dimen/dimen_10"
+                android:popupElevation="3dp"
+                android:textColor="@color/text_color"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCurrencies"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/dimen_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilSpinner"
+            app:layout_constraintVertical_bias="0" />
+
+        <RelativeLayout
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
