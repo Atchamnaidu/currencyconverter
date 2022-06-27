@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupSpinner() {
-        spinner.setOnFocusChangeListener { v, hasFocus ->
+        spinner.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 hideSoftKeyboard()
             }

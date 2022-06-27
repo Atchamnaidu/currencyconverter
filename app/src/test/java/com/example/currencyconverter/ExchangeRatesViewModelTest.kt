@@ -8,7 +8,6 @@ import com.example.currencyconverter.model.Currency
 import com.example.currencyconverter.model.ExchangeRates
 import com.example.currencyconverter.viewmodel.ExchangeRatesViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
@@ -55,7 +54,7 @@ class ExchangeRatesViewModelTest {
         viewModel.exchangeRates.getOrAwaitValueTest {
             advanceUntilIdle()
         }
-        delay(1000)
+
         Assert.assertTrue(viewModel.currencyList == arrayListOf("AED", "IND", "USD"))
     }
 
@@ -65,7 +64,7 @@ class ExchangeRatesViewModelTest {
         viewModel.exchangeRates.getOrAwaitValueTest {
             advanceUntilIdle()
         }
-        delay(1000)
+
         Assert.assertTrue(viewModel.currencyValues == rates)
     }
 
@@ -75,7 +74,7 @@ class ExchangeRatesViewModelTest {
         viewModel.exchangeRates.getOrAwaitValueTest {
             advanceUntilIdle()
         }
-        delay(1000)
+
         Assert.assertTrue(viewModel.baseCurrency == baseCurrency)
     }
 
@@ -85,7 +84,7 @@ class ExchangeRatesViewModelTest {
         viewModel.exchangeRates.getOrAwaitValueTest {
             advanceUntilIdle()
         }
-        delay(1000)
+
         viewModel.updateAdapterData()
         val value = viewModel.adapterModel.getOrAwaitValueTest {
             advanceUntilIdle()
@@ -107,7 +106,7 @@ class ExchangeRatesViewModelTest {
         viewModel.exchangeRates.getOrAwaitValueTest {
             advanceUntilIdle()
         }
-        delay(1000)
+
         viewModel.calculateFraction("IND")
         val fraction =
             viewModel.javaClass.getDeclaredField("fraction")
